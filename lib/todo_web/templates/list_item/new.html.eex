@@ -1,0 +1,3 @@
+<h1>New Item</h1>
+<%= render("form.html", assigns) %>
+<span><%= link "Back", to: Routes.list_path(@conn, :show, @list_id) %></span>

@@ -1,0 +1,33 @@
+<div class="card">
+  <div class="card-body" id="list" data-list-id="<%= @list.id %>">
+    <div class="card-title">
+      <%= @list.title %>
+    </div>
+    <hr>
+
+    <div class="card-text">
+      <%= Enum.map @item_trees, fn tree ->
+        Todo.Item.Tree.map_depth_first tree, fn item, children ->
+            render("item_card.html", %{
+                item: item,
+                children: children
+            })
+        end
+      end %>
+    </div>
+    <br/>
+    <div class="item-card">
+        <div class='main-state-btn'>
+            <i class="fa fa-plus"
+                onClick="newItemClicked(event)">New item</i>
+        </div>
+        <div class ='new-state-btn d-none'>
+          <div class="item-title new-state-btn" 
+            contenteditable="true"></div>
+            <i class="fa fa-check"
+                onClick="acceptNewItem(event)"></i>
+            <i class="fa fa-window-close"
+                onClick="cancelNewItem(event)"></i>
+        </div>
+      </div>
+</div>

@@ -1,0 +1,14 @@
+<h1>Create New User</h1>
+<div class="alert alert-danger"><%= if @changeset.action == :insert, do: inspect(@changeset.errors) %></div>
+<%= form_for @changeset, Routes.user_path(@conn, :create), fn f -> %>
+    <div class="form-group">
+        <%= text_input f, :email, placeholder: "Email", class: "form-control"%>
+    </div>
+    <div class="form-group">
+        <%= text_input f, :name, placeholder: "Name", class: "form-control"%>
+    </div>
+    <div class="form-group">
+        <%= password_input f, :password, placeholder: "Password", class: "form-control"%>
+    </div>
+    <%= submit "Create New User", class: "btn btn-primary" %>
+<% end %>

@@ -1,0 +1,20 @@
+defmodule Todo.List do
+  use Ecto.Schema
+  import Ecto.Changeset
+
+  schema "lists" do
+    field :title, :string
+
+    belongs_to :user, Todo.User
+    has_many :items, Todo.Item
+
+    timestamps()
+  end
+
+  @doc false
+  def changeset(list \\ %__MODULE__{}, attrs \\ %{}) do
+    list
+    |> cast(attrs, [:title])
+    |> validate_required([:title])
+  end
+end

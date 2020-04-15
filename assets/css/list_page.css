@@ -1,0 +1,31 @@
+
+
+.card-title {
+  font-size: x-large;
+}
+
+.item-card-children {
+    padding-left: 40px;
+  }
+
+.item-title {
+    font-size: large;
+    color: #36393D;
+    background-color: #fff;
+    border-radius: 3px;
+    box-shadow: 1px 1px 1px 1px rgba(9,30,66,.25);
+    margin-bottom: 8px;
+    position: relative;
+    text-decoration: none;
+    z-index: 0;
+  }
+
+.fa {
+    font-size: large;
+    color: #515A5A;
+  }
+
+.fa:hover {
+    color: #356AA0;
+  }
+
