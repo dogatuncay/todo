@@ -36,7 +36,7 @@ defmodule TodoWeb.Router do
   scope "/", TodoWeb do
     pipe_through [:browser, :browser_auth]
     resources "/users", UserController, only: [:show, :index, :update, :delete]
-    resources "/lists", ListController, except: [:update]
+    resources "/lists", ListController, only: [:index, :show]
   end
 
   scope "/api", TodoWeb do

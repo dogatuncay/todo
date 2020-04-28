@@ -1,16 +1,16 @@
 
-.list-title {
-  font-size: large;
-  cursor: pointer;
-}
-
-.list-title:hover {
-  color: #356AA0;
-}
-
 
 .card-title {
   font-size: x-large;
+  cursor: pointer;
+}
+.card-title:hover {
+  color: #356AA0;
+}
+
+.list-title {
+  font-size: x-large;
+  padding-bottom: 10px;
 }
 
 .item-card-children {
@@ -47,4 +47,14 @@
 
 .new-card:hover {
   color: #356AA0;
+}
+
+.authentication-buttons {
+  display: flex;
+  flex-direction: column;
+  
+}
+
+.btn {
+  margin: 2px 0 2px 0;
 }

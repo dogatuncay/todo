@@ -48,7 +48,7 @@ const ItemController = Controller.define({
         ItemModel.create(this.model.list_id, data)
           .then((response) => {
             this.view.stopNewChild();
-            this.view.addChild(new this.ViewClass(response));
+            this.view.addChild(new this.ViewClass(response.result));
           })
           .catch((error) => this.view.setError(error));
       }

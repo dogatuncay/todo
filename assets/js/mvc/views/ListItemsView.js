@@ -12,7 +12,7 @@ const ListItemsView = View.define({
     <div vid="root" class="list card">
       <div vid="error"></div>
       <div class="card-body">
-        <div vid="title" class="card-title"></div>
+        <div vid="title" class="list-title"></div>
         <div vid="items" class="card-text">
           <Children></Children>
         </div>
@@ -27,6 +27,12 @@ const ListItemsView = View.define({
             <div vid="newTitle" class="item-title" contenteditable="true"></div>
             <i vid="saveNewItemButton" class="fa fa-check"></i>
             <i vid="cancelNewItemButton" class="fa fa-window-close"></i>
+          </div>
+        </div>
+        <div class="list new-card">
+          <div vid="back">
+            <i class="fa fa-arrow-left"></i>
+            Back
           </div>
         </div>
       </div>

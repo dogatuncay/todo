@@ -11,7 +11,7 @@
     <%= csrf_meta_tag() %>
   </head>
   <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar">
       <a class="navbar-brand" href="#">Todo App</a>
       <%= render "sign_in_sign_out.html", conn: @conn %>
     </nav>

@@ -81,7 +81,7 @@ defmodule TodoWeb.ApiController do
   #todo
   def delete_list(conn, %{"id" => id}) do
     list = Repo.get!(Todo.List, id)
-    case Repo.delete(list) do
+    case Todo.List.delete_list_w_items(list) do
       {:ok, _} ->
         render(conn, "ok.json")
       {:error, changeset} ->

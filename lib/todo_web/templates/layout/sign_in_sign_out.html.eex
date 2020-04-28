@@ -1,7 +1,11 @@
 <%= if logged_in?(@conn) do %>
-  <%= link "Sign out", to: Routes.session_path(@conn, :delete, :access), method: :delete, class: "btn btn-danger" %><br>
-  <%= link "#{current_user(@conn).email}", to: Routes.user_path(@conn, :show, current_user(@conn)) %>
+  <div class="authentication-buttons">
+    <%= link "#{current_user(@conn).email}", to: Routes.user_path(@conn, :show, current_user(@conn)) %>
+    <%= link "Sign out", to: Routes.session_path(@conn, :delete, :access), method: :delete, class: "btn btn-danger" %><br>
+  </div>
 <% else %>
-  <%= link "Create new account", to: Routes.user_path(@conn, :new), class: "btn btn-danger" %>
-  <%= link "Sign in", to: Routes.session_path(@conn, :new), class: "btn btn-danger" %>
+  <div class="authentication-buttons">
+    <%= link "Sign in", to: Routes.session_path(@conn, :new), class: "btn btn-danger" %>
+    <%= link "Create new account", to: Routes.user_path(@conn, :new), class: "btn btn-danger" %>
+  </div>
 <% end %>

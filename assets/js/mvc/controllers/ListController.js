@@ -31,6 +31,11 @@ const ListController = Controller.define({
         this.model.destroy()
           .catch((error) => this.view.setError(error));
       }
+    },
+    viewItems: {
+      click: function(e) {
+        window.location = "http://localhost:4000/lists/".concat(this.model.id);
+      }
     }
   }
 });

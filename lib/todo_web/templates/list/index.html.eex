@@ -2,7 +2,6 @@
   <%= Enum.map(@lists, fn(list) -> render("list_view.html", %{list: list}) end) %>
 </ListIndex>
 
-
 <script type="text/javascript">
   initMVC();
 </script>

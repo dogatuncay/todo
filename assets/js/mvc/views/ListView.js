@@ -8,11 +8,12 @@ const ListView = View.define({
   Controller: ListController,
 
   layout: `
-    <div vid="root" class="list card">
+    <div vid="root" class="card">
       <div vid="title" class="card-title"></div>
       <div vid="mainControls">
         <i vid="editButton" class="fa fa-edit"></i>
         <i vid="deleteButton" class="fa fa-trash"></i>
+        <i vid="viewItems" class="fa fa-arrow-right"></i>
       </div>
       <div vid="editControls" class="d-none">
         <i vid="saveButton" class="fa fa-check"></i>
