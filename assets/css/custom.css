@@ -1,4 +1,13 @@
 
+.list-title {
+  font-size: large;
+  cursor: pointer;
+}
+
+.list-title:hover {
+  color: #356AA0;
+}
+
 
 .card-title {
   font-size: x-large;
@@ -29,3 +38,13 @@
     color: #356AA0;
   }
 
+.new-card {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-size: large;
+  cursor: pointer;
+}
+
+.new-card:hover {
+  color: #356AA0;
+}

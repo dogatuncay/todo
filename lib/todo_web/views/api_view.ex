@@ -1,6 +1,13 @@
 defmodule TodoWeb.ApiView do
   use TodoWeb, :view
 
+  def render("ok.json", %{result: result}) do
+    %{
+      ok: true,
+      result: result
+    }
+  end
+
   def render("ok.json", _) do
     %{
       ok: true

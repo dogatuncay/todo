@@ -11,7 +11,7 @@ defmodule TodoWeb.SessionController do
                 #logged_in_user = Guardian.Plug.current_resource(conn)
                 conn
                 |> put_flash(:info, "Logged In")
-                |> redirect(to: Routes.item_path(conn, :index))
+                |> redirect(to: Routes.list_path(conn, :index))
             {:error, _reason, conn} ->
                 conn
                 |> put_flash(:error, "Wrong username/password")

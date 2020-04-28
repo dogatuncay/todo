@@ -1,3 +1,5 @@
+import {findChildWithClass} from './helpers'
+
 class RequestError extends Error {
     constructor(response, ...params) {
         super(...params)
@@ -21,11 +23,6 @@ class ApiError extends Error {
       this.json = json
     }
   }
-
-window.findChildWithClass = function(node, className) {
-    const children = [...node.children]
-    return children.find((c) => c.classList.contains(className))
-}
 
 
 //Api calls
@@ -148,7 +145,6 @@ window.itemCheckboxClicked = function(e) {
         .catch(function(error) {
             console.error(error)
             document.getElementById('error-message').innerHTML = '<p>There was a system error. Please try again later</p>'
-            // $('#error-message').html('<p>There was a system error. Please try again later</p>')
         })
 }
 

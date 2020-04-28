@@ -1,25 +1,8 @@
-<div class="card">
-  <div class="card-body">
-    <h3 class="card-title">
-      Todo Lists
-      <%= link "New list", to: Routes.list_path(@conn, :new), 
-          class: "btn btn-secondary btn-xs" %>
-    </h3>
-    <p class="card-text">
-      <%= for list <- @lists do %>
-        <h5 data-id-list-title="<%= list.id%>"><%= list.title %></h5>
-        <%# <%= link "Edit", to: Routes.list_path(@conn, :edit, list),
-            class: "btn btn-secondary btn-sm" %>
+<ListIndex>
+  <%= Enum.map(@lists, fn(list) -> render("list_view.html", %{list: list}) end) %>
+</ListIndex>
 
-        <button type="button" 
-          class="btn btn-secondary btn-sm" 
-          data-id="<%= list.id%>" 
-          onClick="listEditClicked(event)">Edit</button>
-        <%= link "Delete", to: Routes.list_path(@conn, :delete, list),    
-            method: :delete, data: [confirm: "Are you sure?"],
-            class: "btn btn-secondary btn-sm" %>
-        <hr>
-      <% end %>
-    </p>
-  </div>
-</div>
+
+<script type="text/javascript">
+  initMVC();
+</script>

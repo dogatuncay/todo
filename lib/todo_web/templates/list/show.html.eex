@@ -1,67 +1,16 @@
-<div class="card">
-  <div class="card-body" id="list" data-list-id="<%=@list.id%>">
-    <div class="card-title">
-      <%=@list.title%>
-    </div>
-    <hr>
-
-    <div class="card-text">
-      <!--Existing Items-->
-      <%= for item <- @items do %>
-        <div data-id="<%= item.id%>">
-          <div class="item-title"><%= item.title %></div>
-          <div class="main-state-btn">
-            <input type="button"
-              onClick="newSubItemClicked(event)"
-              class="btn btn-secondary btn-sm"
-              value="Add Subitem">
-            <input type="button"
-              onClick="trashItemClicked(event)"
-              class="btn btn-secondary btn-sm"
-              value="Trash">
-            <input type="button"
-              onClick="editItemClicked(event)"
-              class="btn btn-secondary btn-sm"
-              value="Edit">
-            <input type="checkbox"
-              onClick="itemCheckboxClicked(event)"
-              <%= if item.completed, do: 'checked' %> />
-          </div>
-          <div class="edit-state-btn invisible">
-            <input type="button"
-              onClick="acceptEditItem(event)"
-              class="btn btn-secondary btn-sm"
-              value="Accept">
-            <input type="button"
-              onClick="cancelEditItem(event)"
-              class="btn btn-secondary btn-sm"
-              value="Cancel">
-          </div>
-          <div class="item-card-children"></div>
-        </div>
-      <% end %>
-
-      <!--New Item Card-->
-      <div class="item-card">
-        <div class='main-state-btn'>
-          <input type="button"
-            onClick="newItemClicked(event)"
-            class="btn btn-secondary btn-sm"
-            value="New Item">
-        </div>
-        <div class ='new-state-btn invisible'>
-          <div class="item-title new-state-btn" 
-            contenteditable="true"></div>
-          <input type="button"
-            onClick="acceptNewItem(event)"
-            class="btn btn-secondary btn-sm"
-            value="Accept">
-          <input type="button"
-            onClick="cancelNewItem(event)"
-            class="btn btn-secondary btn-sm"
-            value="Cancel">
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+<%=
+    render("list_items_view.html", %{
+        list: @list,
+        children: Enum.map(@item_trees, fn tree ->
+            Todo.Item.Tree.map_depth_first(tree, fn item, children ->
+                render("item_view.html", %{
+                    item: item,
+                    children: children
+                })
+            end)
+        end)
+    })
+%>
+<script type="text/javascript">
+    initMVC();
+</script>

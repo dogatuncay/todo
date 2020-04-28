@@ -1,0 +1,1 @@
+<List data-id=<%=@list.id%> data-title="<%=@list.title%>"></List>

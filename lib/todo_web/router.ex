@@ -37,18 +37,18 @@ defmodule TodoWeb.Router do
     pipe_through [:browser, :browser_auth]
     resources "/users", UserController, only: [:show, :index, :update, :delete]
     resources "/lists", ListController, except: [:update]
-    resources "/items", ItemController
-    # get "/items/:id/children/new", ItemController, :new_child
-    # post "/items/:id/children", ItemController, :create_child, as: :item_create_child
-    # index "/items/:id/children", ItemController, :index_children
   end
 
   scope "/api", TodoWeb do
     pipe_through [:api]
+
+    post "/lists/:list_id/items", ApiController, :new_item
     put "/items/:id", ApiController, :update_item
     delete "/items/:id", ApiController, :delete_item
-    post "/lists/:list_id/items", ApiController, :new_item
 
+    post "/lists", ApiController, :new_list
+    put "/lists/:id", ApiController, :update_list
+    delete "/lists/:id", ApiController, :delete_list
   end
 
   # Other scopes may use custom stacks.

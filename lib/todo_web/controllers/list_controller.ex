@@ -47,7 +47,7 @@ defmodule TodoWeb.ListController do
     list = Todo.Repo.get(Todo.List, id)
     items = Todo.Repo.all(Ecto.assoc(list, :items))
     item_trees = Todo.Item.Tree.construct_tree(items)
-    render(conn, "show2.html", list: list, item_trees: item_trees)
+    render(conn, "show.html", list: list, item_trees: item_trees)
   end
 
   def edit(conn, %{"id" => id}) do

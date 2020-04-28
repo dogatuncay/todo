@@ -8,14 +8,11 @@
             onClick="trashItemClicked(event)"></i>
         <i class="fa fa-edit"
             onClick="editItemClicked(event)"></i>
-        <%# <input type="checkbox"
-            onClick="itemCheckboxClicked(event)"
-            <%= if @item.completed, do: 'checked' %>
         <%= if @item.completed do %>
             <i class="fa fa-check-square-o"></i>
         <% else %>
             <i class="fa fa-square-o"></i>
-        <% end %> 
+        <% end %>
     </div>
 
     <div class="edit-state-btn d-none">

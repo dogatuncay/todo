@@ -1,0 +1,3 @@
+<ListItems data-id=<%=@list.id%> data-title="<%=@list.title%>">
+    <%=@children%>
+</ListItems>

@@ -13,7 +13,7 @@ import "phoenix_html"
 import "bootstrap"
 import 'whatwg-fetch'
 import $ from 'jquery'
-window.$ = $    
+window.$ = $;
 
 // Import local files
 //
@@ -21,3 +21,6 @@ window.$ = $
 // import socket from "./socket"
 import './items'
 import './lists'
+
+import initMVC from './mvc/init'
+window.initMVC = initMVC;

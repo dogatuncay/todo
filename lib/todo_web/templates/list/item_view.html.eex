@@ -1,0 +1,3 @@
+<Item data-id=<%=@item.id%> data-list_id=<%= @item.list_id %> data-title="<%=@item.title%>" data-completed=<%=@item.completed%>>
+    <%=@children%>
+</Item>

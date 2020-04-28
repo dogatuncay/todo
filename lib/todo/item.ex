@@ -3,6 +3,7 @@ defmodule Todo.Item do
   import Ecto.Changeset
   import Ecto.Query
 
+  @derive {Jason.Encoder, only: [:id, :title, :completed, :user_id, :list_id, :parent_item]}
   schema "items" do
     field :completed, :boolean, default: false
     field :title, :string

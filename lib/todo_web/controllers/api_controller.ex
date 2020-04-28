@@ -14,8 +14,8 @@ defmodule TodoWeb.ApiController do
       |> Ecto.Changeset.put_assoc(:user, user)
 
     case Repo.insert(changeset) do
-      {:ok, _} ->
-        render(conn, "ok.json")
+      {:ok, created_item} ->
+        render(conn, "ok.json", result: created_item)
       {:error, %Ecto.Changeset{} = changeset} ->
         conn
         |> put_status(:bad_request)
@@ -46,32 +46,49 @@ defmodule TodoWeb.ApiController do
         |> put_status(:bad_request)
         |> render("changeset_errors.json", errors: changeset.errors)
     end
-    # case Repo.delete(item) do
-    #   {:ok, _} ->
-    #     render(conn, "ok.json")
-    #   {:error, changeset} ->
-    #     conn
-    #     |> put_status(:bad_request)
-    #     |> render("changeset_errors.json", errors: changeset.errors)
-    # end
   end
 
-  # def create_child(conn, %{"list_id" => list_id, "item" => item_params}) do
-  #   #item_params = Map.put(item_params, "parent_item", parent_item)
-  #   list = Repo.get!(Todo.List, list_id)
-  #   changeset =
-  #     Guardian.Plug.current_resource(conn)
-  #     |> Ecto.build_assoc(:items)
-  #     |> Item.changeset(item_params)
-  #     |> Ecto.Changeset.put_assoc(:list, list)
 
-  #   case Repo.insert(changeset) do
-  #     {:ok, _} ->
-  #       render(conn, "ok.json")
-  #     {:error, %Ecto.Changeset{} = changeset} ->
-  #       conn
-  #       |> put_status(:bad_request)
-  #       |> render("changeset_errors.json", errors: changeset.errors)
-  #   end
-  # end
+  def new_list(conn, %{"list" => list_params}) do
+    changeset =
+      Guardian.Plug.current_resource(conn)
+      |> Ecto.build_assoc(:lists)
+      |> Todo.List.changeset(list_params)
+
+    case Repo.insert(changeset) do
+      {:ok, created_list} ->
+        render(conn, "ok.json", result: created_list)
+      {:error, %Ecto.Changeset{} = changeset} ->
+        conn
+        |> put_status(:bad_request)
+        |> render("changeset_errors.json", errors: changeset.errors)
+    end
+  end
+
+  def update_list(conn, %{"id" => id, "list" => list_params}) do
+    list = Repo.get!(Todo.List, id)
+
+    case Todo.List.changeset(list, list_params) |> Repo.update do
+      {:ok, _} ->
+        render(conn, "ok.json")
+      {:error, changeset} ->
+        conn
+        |> put_status(:bad_request)
+        |> render("changeset_errors.json", errors: changeset.errors)
+    end
+  end
+
+  #todo
+  def delete_list(conn, %{"id" => id}) do
+    list = Repo.get!(Todo.List, id)
+    case Repo.delete(list) do
+      {:ok, _} ->
+        render(conn, "ok.json")
+      {:error, changeset} ->
+        conn
+        |> put_status(:bad_request)
+        |> render("changeset_errors.json", errors: changeset.errors)
+    end
+  end
+
 end
